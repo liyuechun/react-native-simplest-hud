@@ -6,7 +6,9 @@ import {
     Image,
     StyleSheet,
     TouchableHighlight,
-    View
+    View,
+    Text,
+    ActivityIndicator
 } from 'react-native';
 
 import tweenState from 'react-tween-state';
@@ -53,8 +55,8 @@ var RNProgressHUD = React.createClass({
   mixins: [tweenState.Mixin],
 
   contextTypes: {
-    showHUD: React.PropTypes.func.isRequired,
-    hideHUD: React.PropTypes.func
+    showHUD: PropTypes.func.isRequired,
+    hideHUD: PropTypes.func.isRequired
   },
 
   statics: {
@@ -62,16 +64,20 @@ var RNProgressHUD = React.createClass({
   },
 
   propTypes: {
-    isVisible: React.PropTypes.bool.isRequired,
-    color: React.PropTypes.string,
-    overlayColor: React.PropTypes.string
+    isVisible: PropTypes.bool.isRequired,
+    color: PropTypes.string.isRequired,
+    overlayColor: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    isActivityIndicator: PropTypes.bool.isRequired
   },
 
   getDefaultProps() {
     return {
       color: '#000',
       overlayColor: 'rgba(0, 0, 0, 0)',
-      isVisible: false
+      isVisible: false,
+      label: '',
+      isActivityIndicator: false
     };
   },
 
@@ -112,9 +118,33 @@ var RNProgressHUD = React.createClass({
       this.getTweeningValue('rotate_deg')
     ).toString() + 'deg';
 
+    let hudView = this.props.isActivityIndicator === false ? (
+      <Image
+        style={[styles.spinner, {
+          backgroundColor: this.props.color,
+          transform: [
+            {rotate: deg}
+          ]
+        }]}
+        source={{
+          uri: 'data:image/png;base64,' + images['1x'],
+          isStatic: true
+        }}
+      >
+        <View style={styles.inner_spinner}>
+        </View>
+      </Image>
+    ): 
+    (<ActivityIndicator
+      animating={this.context.is_hud_visible}
+      style={[styles.spinner]}
+      size={50}
+      color={this.props.color}
+    />);
+
     return (
       <TouchableHighlight
-        key="MBProgressHUD"
+        key="RNProgressHUD"
         style={styles.overlay}
         underlayColor="rgba(0, 0, 0, 0.11)"
         activeOpacity={1}
@@ -124,21 +154,10 @@ var RNProgressHUD = React.createClass({
             left: this.getTweeningValue('left')
           }]}
         >
-          <Image
-            style={[styles.spinner, {
-              backgroundColor: this.props.color,
-              transform: [
-                {rotate: deg}
-              ]
-            }]}
-            source={{
-              uri: 'data:image/png;base64,' + images['1x'],
-              isStatic: true
-            }}
-          >
-            <View style={styles.inner_spinner}>
-            </View>
-          </Image>
+          {hudView}
+          {
+            this.props.label === "" ? <Text /> : <Text style={{color: this.props.color,marginTop: 5}}>{this.props.label}</Text>
+          }
         </View>
       </TouchableHighlight>
     );

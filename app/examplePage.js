@@ -31,7 +31,9 @@ class ExamplePage extends  mixin(RNProgressHUD.Mixin){
 
         
         this.state = {
-            dataSource: ds.cloneWithRowsAndSections({},[],[])
+            dataSource: ds.cloneWithRowsAndSections({},[],[]),
+            isActivityIndicator: false,
+            label: ""
         }
     }
 
@@ -63,21 +65,38 @@ class ExamplePage extends  mixin(RNProgressHUD.Mixin){
                 <RNProgressHUD
                     isVisible={this.state.is_hud_visible}
                     color='rgb(69,149,252)'
+                    label={this.state.label}
+                    isActivityIndicator={this.state.isActivityIndicator}
                 />
             </View>
         );
     }
 
     _renderRow = (rowData,sectionID,rowID) => {
+
         return (
             <TouchableHighlight 
                 underlayColor="white"
                 onPress={() => {
                     console.log(sectionID + "  " + rowID);
+                    if (sectionID === 'section0') {
+                        this.setState({isActivityIndicator: true});
+                    } 
+                    else if (sectionID === 'section1') {
+                        this.setState({isActivityIndicator: false});
+                    }
+
+                    if (rowID === 'row0') {
+                        this.setState({label: ""});
+                    } 
+                    else if (rowID === 'row1') {
+                        this.setState({label: "Loading..."});
+                    }
+
                     this.showHUD();
                     setTimeout(() => {
                         this.hideHUD();
-                    },3000);
+                    },10000);
                 }}    
             >
                 <View style={{

@@ -4,20 +4,20 @@
           "title": "ActivityIndicator",
           "types": [
                 {
-                    "text": "ActivityIndicator Without mode"
+                    "text": "ActivityIndicator Without label mode"
                 }, 
                 {
-                    "text": "ActivityIndicator With mode"
+                    "text": "ActivityIndicator With label mode"
                 }]
       },
       {
           "title": "Rotating ring",
           "types": [
                 {
-                    "text": "Rotating ring Without mode"
+                    "text": "Rotating ring Without label mode"
                 }, 
                 {
-                    "text": "Rotating ring With mode"
+                    "text": "Rotating ring With label mode"
                 }]
       }
   ]

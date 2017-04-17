@@ -16,7 +16,7 @@ const ExampleScreen = StackNavigator({
 {
     navigationOptions: ({navigation}) => {
         return {
-            headerTitle: 'MBProgressHUD',
+            headerTitle: 'RNProgressHUD',
             headerStyle: {backgroundColor: 'rgb(69,149,252)'},
             headerTitleStyle: {color: 'white',fontSize: 18},
         }
