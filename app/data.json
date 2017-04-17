@@ -1,0 +1,24 @@
+{
+  "data": [
+      {
+          "title": "ActivityIndicator",
+          "types": [
+                {
+                    "text": "ActivityIndicator Without mode"
+                }, 
+                {
+                    "text": "ActivityIndicator With mode"
+                }]
+      },
+      {
+          "title": "Rotating ring",
+          "types": [
+                {
+                    "text": "Rotating ring Without mode"
+                }, 
+                {
+                    "text": "Rotating ring With mode"
+                }]
+      }
+  ]
+}

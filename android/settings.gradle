@@ -1,0 +1,3 @@
+rootProject.name = 'hud_demo'
+
+include ':app'
