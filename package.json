@@ -9,15 +9,13 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
-    "react-navigation": "git+https://github.com/react-community/react-navigation.git",
-    "react-tween-state": "^0.1.5"
+    "react-native-simplest-hud": "^3.0.0",
+    "react-navigation": "git+https://github.com/react-community/react-navigation.git"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
     "jest": "19.0.2",
-    "jest-cli": "^19.0.2",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {

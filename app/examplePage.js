@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 
-import {  
+import {
     Text,
     ListView,
     View,
     TouchableHighlight
 } from 'react-native';
-import RNProgressHUD from './venders/RNProgressHUD/index';
-import mixin from './venders/RNProgressHUD/mixin';
+
+import { RNProgressHUD,mixin } from 'react-native-simplest-hud';
+
 import jsonData from './data.json';
 
 class ExamplePage extends  mixin(RNProgressHUD.Mixin){
+
+    static navigationOptions = {
+        tabBarLabel: '主页',
+        headerTitle: 'RNProgressHUD'
+    }
 
     constructor(props){
         super(props);
@@ -29,7 +35,7 @@ class ExamplePage extends  mixin(RNProgressHUD.Mixin){
             getSectionHeaderData: getSectionHeaderData
         });
 
-        
+
         this.state = {
             dataSource: ds.cloneWithRowsAndSections({},[],[]),
             isActivityIndicator: false,
@@ -75,20 +81,20 @@ class ExamplePage extends  mixin(RNProgressHUD.Mixin){
     _renderRow = (rowData,sectionID,rowID) => {
 
         return (
-            <TouchableHighlight 
+            <TouchableHighlight
                 underlayColor="white"
                 onPress={() => {
                     console.log(sectionID + "  " + rowID);
                     if (sectionID === 'section0') {
                         this.setState({isActivityIndicator: true});
-                    } 
+                    }
                     else if (sectionID === 'section1') {
                         this.setState({isActivityIndicator: false});
                     }
 
                     if (rowID === 'row0') {
                         this.setState({label: ""});
-                    } 
+                    }
                     else if (rowID === 'row1') {
                         this.setState({label: "Loading..."});
                     }
@@ -96,8 +102,8 @@ class ExamplePage extends  mixin(RNProgressHUD.Mixin){
                     this.showHUD();
                     setTimeout(() => {
                         this.hideHUD();
-                    },10000);
-                }}    
+                    },3000);
+                }}
             >
                 <View style={{
                     backgroundColor: '#bbbbbb',
@@ -114,7 +120,7 @@ class ExamplePage extends  mixin(RNProgressHUD.Mixin){
 
 
     componentDidMount() {
-        
+
         let data = jsonData.data;
         let dataBlob = {};
         let sections = [];
