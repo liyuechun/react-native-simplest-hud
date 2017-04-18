@@ -5,7 +5,7 @@ If you want to learn React-Native cross platform project，Check out [ComicBook]
 
 
 ## Design sketch
-![progress-hud-screen](http://ooljpjhzm.bkt.clouddn.com/hud.gif)
+
 ![progress-hud-screen](http://ooljpjhzm.bkt.clouddn.com/001.png)
 ![progress-hud-screen](http://ooljpjhzm.bkt.clouddn.com/002.png)
 ![progress-hud-screen](http://ooljpjhzm.bkt.clouddn.com/003.png)
